@@ -8,6 +8,7 @@ module SitemapGenerator
 
     if SitemapGenerator.app.rails3?
       include ::Rails.application.routes.url_helpers
+      include Rails.application.routes.mounted_helpers
     elsif SitemapGenerator.app.rails?
       require 'action_controller'
       include ActionController::UrlWriter
@@ -34,7 +35,7 @@ module SitemapGenerator
     def add_to_index(*args)
       @linkset.add_to_index(*args)
     end
-    
+
     # Start a new group of sitemaps.  Any of the options to SitemapGenerator.new may
     # be passed.  Pass a block with calls to +add+ to add links to the sitemaps.
     #
